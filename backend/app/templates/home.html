@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Page d'accueil API</title>
+</head>
+<body>
+    <h1>Bienvenue sur l'API de votre projet Django !</h1>
+    <p>Liste des endpoints disponibles :</p>
+    <ul>
+        {% for ep in endpoints %}
+            <li><a href="{{ ep.url }}">{{ ep.name }}</a></li>
+        {% endfor %}
+    </ul>
+    <p>Admin Django : <a href="/administrateur/">/administrateur/</a></p>
+</body>
+</html>
