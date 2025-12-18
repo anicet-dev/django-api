@@ -14,6 +14,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 from datetime import timedelta
+import dj_database_url
 
 # ==================================================
 # BASE
@@ -93,14 +94,9 @@ TEMPLATES = [
 # DATABASE (Postgres Docker)
 # ==================================================
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("POSTGRES_DB"),
-        "USER": os.getenv("POSTGRES_USER"),
-        "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
-        "HOST": os.getenv("POSTGRES_HOST", "postgres_db"),
-        "PORT": os.getenv("POSTGRES_PORT", "5432"),
-    }
+    "default": dj_database_url.config(
+        default=os.getenv("DATABASE_URL")
+    )
 }
 
 # ==================================================
